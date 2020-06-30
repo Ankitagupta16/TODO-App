@@ -1,9 +1,13 @@
 import React from 'react';
+import InputTab from './InputTabComponent';
 
 function Header(props){
-    const {heading}=props;
+    const {heading,addTodo}=props;
     return(
-        <h1>{heading.toUpperCase()}</h1>
+        <header>
+            <h1>{heading.toUpperCase()}</h1>
+            <InputTab addTodo={addTodo}/>
+        </header>
     );
 }
 
