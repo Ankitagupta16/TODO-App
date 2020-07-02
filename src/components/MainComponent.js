@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
 import Todolist from './TodolistComponent';
+import {FILTER_ACTIVE} from '../shared/filter';
+import {getAll, addToList} from '../shared/todo';
 
 class Main extends Component{
     
@@ -7,37 +9,27 @@ class Main extends Component{
     {
         super();
     
-    this.state={
-         
-       items:[
-            {
-                id:1,
-                text:'Complete Java assignment',
-                done:false
-            },
-            {
-                id:2,
-                text:'Buy vegetables',
-                done:false
-            },
-            {
-                id:3,
-                text:'Pay electricty bill',
-                done:false
-            },
-            {
-                id:4,
-                text:'Fix kitchen bulb ',
-                done:false
-            },
-            {
-                id:5,
-                text:'Buy home decore',
-                done:false
-            }
-            ]
-        };
-        this.addTodo= this.addTodo.bind(this);
+    this.state={ 
+        items:getAll(),
+        filter:FILTER_ACTIVE
+        }
+    
+    this.addTodo= this.addTodo.bind(this);
+    this.changeFilter = this.changeFilter.bind(this);
+    }
+
+
+    addTodo(text) {
+        let updatedList = addToList(this.state.items, {text, completed: false});
+
+        this.setState({items: updatedList})
+    } 
+
+
+    changeFilter(key)
+    {
+        console.log("inside change key"+key);
+        this.setState({filter:key});
     }
     render(){
         let heading="todo list";
@@ -46,22 +38,13 @@ class Main extends Component{
                 <div className="row">
                     <Todolist heading={heading} 
                         addTodo={this.addTodo}
-                        items={this.state.items} />
+                        changeFilter={this.changeFilter}
+                        {...this.state} //to send all state elements
+                    />
                     </div>
                 </div>
               );
             }
-    addTodo(text) {
-        let nextId = this.state.items.length + 1
-        let item = {
-            id: nextId,
-            text: text
-        };
-        let updatedList = this.state.items.concat([item]);
-
-        this.setState({
-            items: updatedList
-        })
-    }   
+      
 }
 export default Main;

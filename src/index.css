@@ -23,3 +23,46 @@ li.ui-state-default {
 li.ui-state-default:last-child {
   border-bottom: none;
 }
+
+.todo-footer {
+  border-top: 1px solid #ddd;
+  background-color: burlywood;
+  margin: 0 -20px -10px -20px;
+  padding: 10px 20px;
+  position: relative;
+}
+
+.filters {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.filters li {
+  display: inline-block;
+}
+
+.filters li a {
+  cursor: pointer;
+  color: inherit;
+  margin: 3px;
+  padding: 3px 7px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+.filters li a.selected, .filters li a:hover {
+  border-color:brown;
+}
+
+
+.mark-all-done {
+  margin-top: 10px;
+}
+
+.alert {
+  border: 1px solid #ddd;
+  margin: 10px 0;
+  padding: 10px;
+}
