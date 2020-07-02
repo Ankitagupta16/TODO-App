@@ -10,10 +10,15 @@ body{
   margin-top: 2rem;
 }
 
-.heading h1{
-  padding-bottom: 1rem;
-  text-align: center;
+.todolist h1 {
+  background-color: burlywood;
+  padding: 20px 20px 10px 20px;
+  width: 600px;
+  margin: 30px auto;
+  border: 1px solid #ddd;
+  border-radius: 2px;
 }
+
 
 li.ui-state-default {
   border: none;

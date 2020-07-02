@@ -1,26 +1,19 @@
 import React from 'react';
 import Header from './headerComponent';
-import TodoItem from './todoItemComponent';
+import FilteredList from './FilteredListComponent';
 import Footer from './FooterComponent';
 import {applyFilter} from '../shared/filter';
 
 function Todolist(props){
-    const {heading,items,addTodo,filter,changeFilter}=props;
+    const {heading,items,addTodo,filter,changeFilter,changeStatus}=props;
     const count = items.length;
-    const filteredList = applyFilter(items, filter);
+    const filteredItems = applyFilter(items, filter);
 
     
     return(
-        <div className="heading">
+        <div className="todolist">
             <Header heading={heading} addTodo={addTodo}/>
-            {filteredList.length > 0
-                ? (
-                    <ul className="list-unstyled">
-                        {filteredList.map(item => <TodoItem key={item.id} data={item}/>)}
-                    </ul>
-                )
-                : <p className="alert alert-info">There are no items.</p>
-            }
+            <FilteredList items={filteredItems} changeStatus={changeStatus}/>
             <Footer {...{count,filter,changeFilter}}/>
             </div>
             
@@ -29,3 +22,4 @@ function Todolist(props){
 }
 
 export default Todolist; 
+

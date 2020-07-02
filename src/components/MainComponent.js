@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import Todolist from './TodolistComponent';
-import {FILTER_ACTIVE} from '../shared/filter';
-import {getAll, addToList} from '../shared/todo';
+import {FILTER_ALL} from '../shared/filter';
+import {getAll, addToList,updateStatus} from '../shared/todo';
 
 class Main extends Component{
     
@@ -11,11 +11,12 @@ class Main extends Component{
     
     this.state={ 
         items:getAll(),
-        filter:FILTER_ACTIVE
+        filter:FILTER_ALL
         }
     
     this.addTodo= this.addTodo.bind(this);
     this.changeFilter = this.changeFilter.bind(this);
+    this.changeStatus = this.changeStatus.bind(this);
     }
 
 
@@ -31,6 +32,13 @@ class Main extends Component{
         console.log("inside change key"+key);
         this.setState({filter:key});
     }
+
+    changeStatus(itemId, completed) {
+        const updatedList = updateStatus(this.state.items, itemId, completed);
+
+        this.setState({items: updatedList});
+    }
+
     render(){
         let heading="todo list";
             return(
@@ -39,6 +47,7 @@ class Main extends Component{
                     <Todolist heading={heading} 
                         addTodo={this.addTodo}
                         changeFilter={this.changeFilter}
+                        changeStatus={this.changeStatus}
                         {...this.state} //to send all state elements
                     />
                     </div>
