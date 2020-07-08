@@ -1,20 +1,21 @@
 import React from 'react';
 import Filter from './FilterComponent';
+import ButtonWrapper from './ButtonWrapperComponent';
 
 export default function Footer(props) {
     const {count,filter,changeFilter} = props;
 
     return (
-        <div className="todo-footer clearfix">
+        <footer className="clearfix">
+            <div className="pull-left buttons">
+                <ButtonWrapper {...props}/>
+            </div>
             <div className="pull-left">
-                <strong>
-                    <span className="count-todos">{count}</span>
-                </strong>
-                {' items left'}
+                {`${count} items left`}
             </div>
-            <div className="pull-right ">
-                <Filter filter={filter} changeFilter={changeFilter}/>
+            <div className="pull-right">
+                <Filter {...{filter, changeFilter}}/>
             </div>
-        </div>
+        </footer>
     );
 }

@@ -29,7 +29,7 @@ li.ui-state-default:last-child {
   border-bottom: none;
 }
 
-.todo-footer {
+footer {
   border-top: 1px solid #ddd;
   background-color: burlywood;
   margin: 0 -20px -10px -20px;
@@ -70,4 +70,10 @@ li.ui-state-default:last-child {
   border: 1px solid #ddd;
   margin: 10px 0;
   padding: 10px;
+}
+
+.filters {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }

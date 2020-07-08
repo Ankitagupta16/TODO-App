@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import Todolist from './TodolistComponent';
 import {FILTER_ALL} from '../shared/filter';
 import {getAll, addToList,updateStatus} from '../shared/todo';
+import {MODE_NONE} from '../shared/mode';
 
 class Main extends Component{
     
@@ -37,6 +38,13 @@ class Main extends Component{
         const updatedList = updateStatus(this.state.items, itemId, completed);
 
         this.setState({items: updatedList});
+    }
+    changeMode(mode = MODE_NONE) {
+        this.setState({mode});
+    }
+
+    setSearchQuery(text) {
+        this.setState({query: text || ''});
     }
 
     render(){
